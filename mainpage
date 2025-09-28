@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지구촌교회 젊은이목장 소개</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .presentation-container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide {
+            display: none;
+            padding: 5vw 5%;
+            min-height: auto;
+            text-align: center;
+            position: relative;
+            background: white;
+        }
+
+        .slide.active {
+            display: block;
+            animation: slideIn 0.4s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 20px; color: #4a5568; font-weight: bold; }
+        .slide h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); margin-bottom: 15px; color: #667eea; font-weight: bold; }
+        .slide h3 { font-size: clamp(1.2rem, 3vw, 1.5rem); margin-bottom: 10px; color: #4a5568; font-weight: bold; }
+        .slide p  { font-size: clamp(0.95rem, 2.5vw, 1.1rem); line-height: 1.7; margin-bottom: 15px; color: #2d3748; }
+
+        .mission-text {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            font-size: clamp(1rem, 2.8vw, 1.2rem);
+            line-height: 1.7;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .district-info, .program-item, .schedule-item, .process-step {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 10px 0;
+            text-align: left;
+        }
+
+        .district-info { border-left: 5px solid #667eea; }
+        .program-item { border-left: 5px solid #764ba2; }
+        .schedule-item { border-left: 4px solid #667eea; }
+
+        .district-info h4, .program-item h4, .schedule-item h4 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .core-values {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .value-circle {
+            width: clamp(80px, 25vw, 120px);
+            height: clamp(80px, 25vw, 120px);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover { transform: translateY(-2px); }
+        .nav-btn:disabled { background: #cbd5e0; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        .page-indicator {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(102, 126, 234, 0.15);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        @media (max-width: 500px) {
+            .slide { padding: 30px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="page-indicator">
+            <span id="currentPage">1</span> / <span id="totalPages">8</span>
+        </div>
+
+        <!-- 슬라이드 1: 커버 -->
+        <div class="slide active">
+            <h1>지구촌교회</h1>
+            <h2>젊은이목장 소개</h2>
+            <div class="mission-text">
+                민족을 치유하고 세상을 변화시키는<br>
+                하나님 나라의 비전을 실현하는 교회
+            </div>
+            <p style="margin-top: 40px; font-size: 1.2em; color: #667eea;">
+                복음 · 제자 · 하나님나라를 중심으로<br>
+                평신도 선교사를 세우는 공동체
+            </p>
+        </div>
+
+        <!-- 슬라이드 2: 공동체 구성 -->
+        <div class="slide">
+            <h2>공동체 구성</h2>
+            <div class="mission-text">
+                "우리는 예수 그리스도의 전도 명령과 사랑의 명령에 순종하여, 민족을 치유하고 세상을 변화시키는 교회가 되고자 하며, 소속된 목장교회를 통해 선교사적 삶을 살아가는 선교사로 훈련되어 나아가고자 한다."
+            </div>
+            <p><strong>목장사역을 최우선 가치로 삼습니다</strong></p>
+            <p>목장교회는 7~12명으로 이루어진 소그룹으로, 목자와 예비목자(부목자, 순목자) 목장원으로 구성됩니다.</p>
+        </div>
+
+        <!-- 슬라이드 3: 지구별 구성 -->
+        <div class="slide">
+            <h2>지구별 구성</h2>
+            <div class="district-info">
+                <h4>대학지구 (20-27세)</h4>
+                <p>분당채플 12개 캠퍼스, 수지채플 6개 캠퍼스<br>
+                각 캠퍼스마다 4-12개 정도의 목장으로 구성</p>
+            </div>
+            <div class="district-info">
+                <h4>청년1지구 (28-37세)</h4>
+                <p>분당채플 16개 마을, 수지채플 5개 마을<br>
+                2-4개의 마을이 촌을 이루며, 총 8개의 촌으로 구성</p>
+            </div>
+            <div class="district-info">
+                <h4>청년2지구 (38-50세)</h4>
+                <p>분당채플 8개 마을로 구성<br>
+                한 마을은 3-6개의 목장으로 구성</p>
+            </div>
+            <p style="margin-top: 30px; font-weight: bold; color: #667eea;">
+                약 2000명의 젊은이들이 분당과 수지채플에서 함께 예배
+            </p>
+        </div>
+
+        <!-- 슬라이드 4: 핵심가치 -->
+        <div class="slide">
+            <h2>젊은이목장센터 사역</h2>
+            <p>젊은이목장은 핵심가치를 중심에 두고, 가정과 캠퍼스, 일터로 파송될 평신도 선교사를 세우고 있습니다.</p>
+            <div class="core-values">
+                <div class="value-circle">복음</div>
+                <div class="value-circle">제자</div>
+                <div class="value-circle">하나님나라</div>
+            </div>
+            <p>각 연령대에 맞춘 목장 모임과 훈련을 통해 복음의 일꾼이자 교회의 일꾼으로 세워져가고 있습니다.</p>
+        </div>
+
+        <!-- 슬라이드 5: 복음 공동체 -->
+        <div class="slide">
+            <h2>복음 공동체</h2>
+            <p>예수 그리스도의 십자가의 복음이 살아 있고, 복음의 능력이 경험되는 복음 공동체입니다.</p>
+            
+            <div class="program-item">
+                <h4>1. 겨울수련회</h4>
+                <p>한 해의 문을 복음으로 열며, 예수 그리스도의 복음 앞에 다시 서서 신앙적 정체성을 확인하고 인생의 방향을 새롭게 세워갑니다.</p>
+            </div>
+            
+            <div class="program-item">
+                <h4>2. XEE 전도폭발훈련</h4>
+                <p>8-10주간의 훈련을 통해 복음을 전하는 자로서의 태도와 삶을 익히고 실제로 복음을 전하는 자리까지 나아가도록 돕습니다.</p>
+            </div>
+            
+            <div class="program-item">
+                <h4>3. 프렌즈(1학기) & 블레싱(2학기)</h4>
+                <p>연간 두 번의 전도축제를 진행하여 영혼구원을 위해 기도하며 VIP를 교회로 초청하는 복음의 축제입니다.</p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 6: 제자 공동체 -->
+        <div class="slide">
+            <h2>제자 공동체</h2>
+            <p>예수 그리스도의 주인되심을 고백하며, 자신을 부인하고 십자가의 삶을 살아가는 제자 공동체입니다.</p>
+            
+            <div class="program-item">
+                <h4>1. 제자훈련</h4>
+                <p>겨울수련회를 통해 예수 그리스도의 복음 앞에 다시 서며, 하나님의 부르심 안에서 인생의 방향을 새롭게 세워갑니다.</p>
+            </div>
+            
+            <div class="program-item">
+                <h4>2. 토요목자예배 (청년2지구 주일목자예배)</h4>
+                <p>목자들의 개인 영성 훈련과 주일 목장 모임 준비를 위한 예배와 나눔에 참여합니다.</p>
+            </div>
+            
+            <div class="program-item">
+                <h4>3. GLA 훈련 (대학지구)</h4>
+                <p>진로를 고민하는 대학생들을 위한 진로 아카데미로, 성경적 관점과 크리스천 전문인의 멘토링을 제공합니다.</p>
+            </div>
+            
+            <div class="program-item">
+                <h4>4. 일터제자학교 (청년1지구, 청년2지구)</h4>
+                <p>일의 의미를 새롭게 발견하는 여정으로, 일터를 거룩한 사명의 자리로 경험하게 됩니다.</p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 7: 하나님나라 공동체 -->
+        <div class="slide">
+            <h2>하나님나라 공동체</h2>
+            <p>이땅에 축복이 되는 영적 리더를 세워 민족을 치유하고 세상을 변화시키는 하나님나라 공동체입니다.</p>
+            
+            <div class="program-item">
+                <h4>1. 국내, 해외선교</h4>
+                <p>하나님나라 확장을 위해 국내와 해외선교에 참여합니다.<br>
+                <strong>국내선교:</strong> 매년 여름, 모든 공동체가 전국의 교회로 파송되어 교회와 지역을 섬깁니다.<br>
+                <strong>해외선교:</strong> 매년 여름과 겨울 해외선교사님들의 사역을 돕는 단기 선교를 진행합니다.</p>
+            </div>
+            
+            <div class="program-item">
+                <h4>2. 따뜻한 겨울나기</h4>
+                <p>예수님의 사랑을 전하고 실천하고자, 매년 연말 각 공동체별로 지역사회의 어려운 이웃을 섬깁니다. 젊은이목장의 자발적 헌금과 헌신, 기도로 준비하여 각 가정과 공동체에 예수님의 사랑을 나눕니다.</p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 8: 예배소개 및 정착과정 -->
+        <div class="slide">
+            <h2>예배소개 & 정착과정</h2>
+            
+            <h3>예배 안내</h3>
+            <div class="schedule-item">
+                <h4>홀리웨이브</h4>
+                <div class="time-location">주일 오후 3시 55분 / 분당채플, 수지채플</div>
+                <p>지구촌교회를 대표하는 젊은이예배로, 하나님의 나라를 위한 거룩한 물결이 되기를 결단하는 예배입니다.</p>
+            </div>
+            
+            <div class="schedule-item">
+                <h4>파워웬즈데이</h4>
+                <div class="time-location">수요일 오후 8시 / 분당채플</div>
+                <p>주중에도 하나님과의 영적인 끈을 놓지 않고 힘과 용기를 얻는 예배입니다.</p>
+            </div>
+            
+            <div class="schedule-item">
+                <h4>더함예배 (청년2지구)</h4>
+                <div class="time-location">주일 오후 2시 / 분당채플</div>
+                <p>새터민, 농아인, 청년 2지구가 함께 드리는 세대와 문화를 아우르는 영적 연합의 예배입니다.</p>
+            </div>
+
+            <h3 style="margin-top: 30px;">목장모임 시간</h3>
+            <div class="schedule-item">
+                <p><strong>대학지구:</strong> 주일 14:00<br>
+                <strong>청년1지구:</strong> 주일 14:00<br>
+                <strong>청년2지구:</strong> 주일 16:00</p>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">이전</button>
+            <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">다음</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('totalPages').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('currentPage').textContent = currentSlide + 1;
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            if (direction === 1 && currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            } else if (direction === -1 && currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        // 키보드 네비게이션
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // 터치 네비게이션 (모바일)
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) changeSlide(1);
+            if (touchEndX > touchStartX + 50) changeSlide(-1);
+        }
+
+        // 초기 설정
+        showSlide(0);
+    </script>
+</body>
+</html>
