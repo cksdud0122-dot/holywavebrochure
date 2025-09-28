@@ -53,6 +53,15 @@
         .slide h3 { font-size: clamp(1.2rem, 3vw, 1.5rem); margin-bottom: 10px; color: #4a5568; font-weight: bold; }
         .slide p  { font-size: clamp(0.95rem, 2.5vw, 1.1rem); line-height: 1.7; margin-bottom: 15px; color: #2d3748; }
 
+        /* ✅ 추가: 사진 슬라이드 스타일 */
+        .slide img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            object-fit: contain;
+        }
+
         .mission-text {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
@@ -149,7 +158,7 @@
 <body>
     <div class="presentation-container">
         <div class="page-indicator">
-            <span id="currentPage">1</span> / <span id="totalPages">8</span>
+            <span id="currentPage">1</span> / <span id="totalPages">9</span> <!-- ✅ 페이지 수 9로 변경 -->
         </div>
 
         <!-- 슬라이드 1: 커버 -->
@@ -307,6 +316,12 @@
             </div>
         </div>
 
+       <div class="slide">
+            <h2>사역 사진</h2>
+            <img src="images/ministry-1.jpg" alt="겨울수련회">
+            <p style="margin-top:10px; color:#667eea; font-weight:bold;">겨울수련회 현장</p>
+        </div>
+
         <div class="navigation">
             <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">이전</button>
             <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">다음</button>
@@ -338,13 +353,11 @@
             }
         }
 
-        // 키보드 네비게이션
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowLeft') changeSlide(-1);
             if (e.key === 'ArrowRight') changeSlide(1);
         });
 
-        // 터치 네비게이션 (모바일)
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -362,7 +375,6 @@
             if (touchEndX > touchStartX + 50) changeSlide(-1);
         }
 
-        // 초기 설정
         showSlide(0);
     </script>
 </body>
